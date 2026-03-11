@@ -169,9 +169,7 @@ if menu=="Home":
         <div class='hero'>
         <div class='hero-text'>
         <h1>Your Health Is Our Mission</h1>
-        <p>Healthnesia adalah sistem berbasis Artificial Intelligence
-        yang dirancang untuk membantu mendeteksi risiko penyakit sejak dini,
-        khususnya Diabetes dan Penyakit Jantung.</p>
+        <p>Sistem AI untuk membantu mendeteksi risiko Diabetes dan Penyakit Jantung sejak dini.</p>
         </div>
         </div>
         """,unsafe_allow_html=True)
@@ -179,7 +177,6 @@ if menu=="Home":
         col1,col2 = st.columns(2)
 
         with col1:
-
             st.markdown("<div class='card'>🩸 Informasi Diabetes</div>",unsafe_allow_html=True)
 
             if st.button("Buka Info Diabetes",use_container_width=True):
@@ -187,7 +184,6 @@ if menu=="Home":
                 st.rerun()
 
         with col2:
-
             st.markdown("<div class='card'>❤️ Informasi Penyakit Jantung</div>",unsafe_allow_html=True)
 
             if st.button("Buka Info Jantung",use_container_width=True):
@@ -198,56 +194,23 @@ if menu=="Home":
 
     elif st.session_state.page=="diabetes_info":
 
-        st.title("🩸 Informasi Lengkap Penyakit Diabetes")
+        st.title("🩸 Informasi Penyakit Diabetes")
 
         st.write("""
-Diabetes Mellitus adalah penyakit kronis yang terjadi ketika tubuh tidak
-dapat menghasilkan insulin yang cukup atau tidak dapat menggunakan insulin
-secara efektif. Insulin merupakan hormon yang diproduksi oleh pankreas yang
-berfungsi untuk mengatur kadar gula dalam darah.
+Diabetes adalah penyakit kronis yang terjadi ketika tubuh tidak dapat
+menggunakan insulin secara efektif sehingga kadar gula darah meningkat.
 
-Ketika kadar gula darah terlalu tinggi dan berlangsung dalam waktu lama,
-hal ini dapat menyebabkan berbagai komplikasi serius seperti kerusakan
-pembuluh darah, gangguan saraf, penyakit ginjal, serta gangguan penglihatan.
-
-### Jenis Diabetes
-
-1. **Diabetes Tipe 1**  
-Terjadi ketika sistem kekebalan tubuh menyerang sel pankreas yang
-memproduksi insulin sehingga tubuh tidak dapat menghasilkan insulin.
-
-2. **Diabetes Tipe 2**  
-Jenis yang paling umum terjadi. Tubuh masih memproduksi insulin tetapi
-tidak dapat menggunakannya secara efektif.
-
-3. **Diabetes Gestasional**  
-Terjadi selama masa kehamilan dan biasanya hilang setelah melahirkan,
-namun dapat meningkatkan risiko diabetes tipe 2 di kemudian hari.
-
-### Gejala Diabetes
-
-- Sering merasa haus
+Gejala:
+- Sering haus
 - Sering buang air kecil
-- Mudah merasa lelah
-- Penurunan berat badan tanpa sebab jelas
-- Penglihatan menjadi kabur
-- Luka sulit sembuh
+- Mudah lelah
+- Penglihatan kabur
 
-### Faktor Risiko
-
-- Obesitas atau berat badan berlebih
-- Kurang aktivitas fisik
+Faktor risiko:
+- Obesitas
+- Kurang olahraga
+- Riwayat keluarga
 - Pola makan tidak sehat
-- Riwayat keluarga dengan diabetes
-- Tekanan darah tinggi
-
-### Pencegahan
-
-- Menjaga pola makan sehat
-- Mengurangi konsumsi gula berlebih
-- Berolahraga secara rutin
-- Menjaga berat badan ideal
-- Melakukan pemeriksaan kesehatan secara berkala
 """)
 
         if st.button("⬅ Kembali"):
@@ -258,60 +221,17 @@ namun dapat meningkatkan risiko diabetes tipe 2 di kemudian hari.
 
     elif st.session_state.page=="heart_info":
 
-        st.title("❤️ Informasi Lengkap Penyakit Jantung")
+        st.title("❤️ Informasi Penyakit Jantung")
 
         st.write("""
-Penyakit jantung merupakan salah satu penyebab utama kematian di dunia.
-Istilah ini mencakup berbagai kondisi yang mempengaruhi jantung dan
-pembuluh darah seperti penyakit jantung koroner, gagal jantung,
-aritmia, dan penyakit katup jantung.
+Penyakit jantung adalah gangguan pada jantung dan pembuluh darah yang
+dapat menyebabkan serangan jantung atau gagal jantung.
 
-Penyakit jantung biasanya berkembang secara perlahan akibat
-penumpukan plak di pembuluh darah yang disebut aterosklerosis.
-Penumpukan ini menyebabkan aliran darah ke jantung menjadi
-terhambat sehingga meningkatkan risiko serangan jantung.
-
-### Jenis Penyakit Jantung
-
-1. **Penyakit Jantung Koroner**  
-Terjadi ketika pembuluh darah yang memasok darah ke jantung
-menyempit akibat penumpukan plak.
-
-2. **Gagal Jantung**  
-Kondisi ketika jantung tidak mampu memompa darah secara efektif.
-
-3. **Aritmia**  
-Gangguan irama jantung yang menyebabkan detak jantung terlalu cepat,
-terlalu lambat, atau tidak teratur.
-
-4. **Penyakit Katup Jantung**  
-Gangguan pada katup jantung yang mempengaruhi aliran darah.
-
-### Gejala Penyakit Jantung
-
-- Nyeri dada
-- Sesak napas
-- Mudah lelah
-- Pusing
-- Detak jantung tidak teratur
-
-### Faktor Risiko
-
+Faktor risiko:
 - Kolesterol tinggi
 - Tekanan darah tinggi
 - Merokok
-- Diabetes
 - Kurang aktivitas fisik
-- Pola makan tidak sehat
-
-### Pencegahan
-
-- Berhenti merokok
-- Mengontrol tekanan darah
-- Menjaga kadar kolesterol
-- Mengonsumsi makanan sehat
-- Berolahraga secara rutin
-- Menghindari stres berlebihan
 """)
 
         if st.button("⬅ Kembali"):
@@ -350,12 +270,34 @@ elif menu=="Prediksi Diabetes":
                 columns=features_diabetes
             )
 
-            pred = rf_diabetes.predict(data)
+            pred_rf = rf_diabetes.predict(data)
+            pred_dt = dt_diabetes.predict(data)
 
-        if pred[0]==1:
+            prob = rf_diabetes.predict_proba(data)
+            risk = prob[0][1]*100
+
+        fig = go.Figure(go.Indicator(
+            mode="gauge+number",
+            value=risk,
+            title={'text':"Risk %"},
+            gauge={'axis':{'range':[0,100]}}
+        ))
+
+        st.plotly_chart(fig,use_container_width=True)
+
+        st.subheader("Random Forest")
+
+        if pred_rf[0]==1:
             st.error("⚠ Terindikasi Diabetes")
         else:
-            st.success("✅ Tidak Ada Indikasi Diabetes")
+            st.success("✅ Tidak Ada Indikasi")
+
+        st.subheader("Decision Tree")
+
+        if pred_dt[0]==1:
+            st.error("⚠ Terindikasi Diabetes")
+        else:
+            st.success("✅ Tidak Ada Indikasi")
 
 # ================= PREDIKSI JANTUNG =================
 
@@ -388,9 +330,31 @@ elif menu=="Prediksi Jantung":
                 columns=Xh.columns
             )
 
-            pred = rf_heart.predict(data)
+            pred_rf = rf_heart.predict(data)
+            pred_dt = dt_heart.predict(data)
 
-        if pred[0]==1:
+            prob = rf_heart.predict_proba(data)
+            risk = prob[0][1]*100
+
+        fig = go.Figure(go.Indicator(
+            mode="gauge+number",
+            value=risk,
+            title={'text':"Risk %"},
+            gauge={'axis':{'range':[0,100]}}
+        ))
+
+        st.plotly_chart(fig,use_container_width=True)
+
+        st.subheader("Random Forest")
+
+        if pred_rf[0]==1:
             st.error("⚠ Terindikasi Penyakit Jantung")
         else:
-            st.success("✅ Tidak Ada Indikasi Penyakit Jantung")
+            st.success("✅ Tidak Ada Indikasi")
+
+        st.subheader("Decision Tree")
+
+        if pred_dt[0]==1:
+            st.error("⚠ Terindikasi Penyakit Jantung")
+        else:
+            st.success("✅ Tidak Ada Indikasi")
